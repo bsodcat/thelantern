@@ -1,5 +1,6 @@
 # The Lantern by Nicholas Achterberg
 # 10:51 9/19/2019
+#
 # This is my first rogue-like game.
 # The gameplay is focused around light, puzzles and fighting.
 #
