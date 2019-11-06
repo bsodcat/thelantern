@@ -20,6 +20,10 @@ def main():
     map_w = 80
     map_h = 45
 
+    room_max_size = 9
+    room_min_size = 4
+    max_rooms = 35
+
     colors = {
         'dark_wall': libtcod.Color(0, 0, 100),
         'dark_ground': libtcod.Color(50, 50, 150)
@@ -36,6 +40,7 @@ def main():
     con = libtcod.console_new(screen_w, screen_h)
 
     game_map = GameMap(map_w, map_h)
+    game_map.make_map(max_rooms, room_min_size, room_max_size, map_w, map_h, player)
 
     key = libtcod.Key()
     mouse = libtcod.Mouse()
