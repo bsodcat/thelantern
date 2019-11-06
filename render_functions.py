@@ -1,7 +1,7 @@
 import libtcodpy as libtcod
 
 
-def render_all(con, entities, game_map, screen_width, screen_height, colors):
+def render_all(con, entities, game_map, screen_w, screen_h, colors):
     # Draw all the tiles in the game map
     for y in range(game_map.height):
         for x in range(game_map.width):
@@ -16,7 +16,7 @@ def render_all(con, entities, game_map, screen_width, screen_height, colors):
     for entity in entities:
         draw_entity(con, entity)
 
-    libtcod.console_blit(con, 0, 0, screen_width, screen_height, 0, 0, 0)
+    libtcod.console_blit(con, 0, 0, screen_w, screen_h, 0, 0, 0)
 
 
 def clear_all(con, entities):
