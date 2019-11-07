@@ -1,6 +1,6 @@
 from random import randint
 
-from map_objects.rectangle import Rect
+from map_objects.room_shape import Room
 from map_objects.tile import Tile
 
 class GameMap:
@@ -8,13 +8,15 @@ class GameMap:
         self.width = width
         self.height = height
         self.tiles = self.initialize_tiles()
+        self.circum = x * x + y * y == r * r
+        self.radius = radius
 
     def initialize_tiles(self):
         tiles = [[Tile(True) for y in range(self.height)] for x in range(self.width)]
 
         return tiles
 
-    def make_map(self, max_rooms, room_min_size, room_max_size, map_w, map_h, player):
+    def make_map(self, max_rooms, room_min_size, room_max_size, map_w, map_h, circum, radius, player):
         rooms = []
         num_rooms = 0
 
@@ -25,9 +27,10 @@ class GameMap:
             # random position without going out of the boundaries of the map
             x = randint(0, map_w - w - 1)
             y = randint(0, map_h - h - 1)
+            c = randint(0, 3)
+            r = randint(0, 3)
 
-            # "Rect" class makes rectangles easier to work with
-            new_room = Rect(x, y, w, h)
+            new_room = Room(x, y, w, h, c)
 
             # run through the other rooms and see if they interact with this one
             for other_room in rooms:
